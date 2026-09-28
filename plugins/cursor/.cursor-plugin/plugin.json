@@ -1,0 +1,39 @@
+{
+  "name": "vibedefender",
+  "displayName": "VibeDefender — Security for AI-built apps",
+  "version": "1.0.0",
+  "description": "Created your app with AI? Scan it before you ship. Runs the VibeDefender security scanner locally on your project and finds the mistakes AI leaves behind: exposed secret keys, Supabase tables without RLS, IDOR, API routes without login, permissive CORS, insecure cookies, SQL injection and .env files in Git. Free score in one command. Your code never leaves your machine.",
+  "author": {
+    "name": "VibeDefender",
+    "email": "sac.vibedefender@gmail.com"
+  },
+  "publisher": "VibeDefender",
+  "homepage": "https://vibedefender.com.br",
+  "repository": "https://github.com/vibedefender/plugins",
+  "license": "MIT",
+  "logo": "assets/logo.png",
+  "keywords": [
+    "security",
+    "security-scanner",
+    "vulnerability-scanner",
+    "appsec",
+    "vibe-coding",
+    "ai-generated-code",
+    "supabase",
+    "rls",
+    "secrets",
+    "idor",
+    "sql-injection",
+    "nextjs",
+    "lovable",
+    "bolt"
+  ],
+  "category": "developer-tools",
+  "tags": [
+    "security",
+    "scanner",
+    "supabase",
+    "vibe-coding"
+  ],
+  "skills": "./skills/"
+}

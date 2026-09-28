@@ -1,0 +1,17 @@
+{
+  "name": "vibedefender",
+  "owner": {
+    "name": "VibeDefender",
+    "email": "sac.vibedefender@gmail.com"
+  },
+  "metadata": {
+    "description": "VibeDefender plugins: run the VibeDefender security scanner from your AI coding tools."
+  },
+  "plugins": [
+    {
+      "name": "vibedefender",
+      "source": "plugins/cursor",
+      "description": "Security scan for AI-built apps. Runs locally; your code never leaves your machine."
+    }
+  ]
+}

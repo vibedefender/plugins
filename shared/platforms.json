@@ -1,0 +1,7 @@
+{
+  "cursor": {
+    "source": "cursor",
+    "skill": "plugins/cursor/skills/vibedefender/SKILL.md",
+    "manifest": "plugins/cursor/.cursor-plugin/plugin.json"
+  }
+}
