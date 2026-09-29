@@ -5,13 +5,13 @@
     "email": "sac.vibedefender@gmail.com"
   },
   "metadata": {
-    "description": "VibeDefender plugins: run the VibeDefender security scanner from your AI coding tools."
+    "description": "Plugins VibeDefender: analise a segurança de apps feitos com IA nas suas ferramentas de programação."
   },
   "plugins": [
     {
       "name": "vibedefender",
       "source": "plugins/cursor",
-      "description": "Security scan for AI-built apps. Runs locally; your code never leaves your machine."
+      "description": "Scanner local de segurança para apps feitos com IA. Resumo gratuito e detalhes no Pro, em português brasileiro."
     }
   ]
 }

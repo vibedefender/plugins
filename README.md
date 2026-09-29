@@ -1,43 +1,55 @@
-# VibeDefender plugins
+# VibeDefender — segurança para quem cria apps com IA
 
-Plugins that bring the [VibeDefender](https://vibedefender.com.br) security scanner to AI coding tools.
+Criou seu app com Cursor, Lovable ou Bolt? Use o [VibeDefender](https://vibedefender.com.br) para verificar problemas de segurança antes de publicar.
 
-**This repository does not contain the scanner.** Each plugin is a thin adapter: it tells the agent to run the published `vibedefender` package from npm in the user's project and to report its result. Detection rules, scoring and everything else live in the scanner, which is proprietary and distributed on npm. When the scanner improves, every plugin benefits immediately, without a plugin update.
+Este repositório contém os **plugins de integração**, com instruções para executar o scanner publicado no npm e apresentar seus resultados. Não contém o código-fonte nem as regras do scanner proprietário. O pacote npm distribui o programa compilado necessário à execução local; isso não torna sua implementação inacessível.
 
-| Platform | Folder | Status |
+| Ferramenta | Integração | Situação |
 | --- | --- | --- |
-| Cursor | [`plugins/cursor`](plugins/cursor) | Ready for Marketplace review |
+| Cursor | [Guia de uso](plugins/cursor) | Preparação para revisão no Marketplace |
 
-## Layout
+## Como usar no Cursor
+
+Com o plugin instalado, peça **“verifique a segurança desse projeto”**, **“rode o VibeDefender”** ou use **`/vibedefender`**. O agente executa o scanner e apresenta a nota, a quantidade de problemas e as verificações afetadas.
+
+O gratuito mostra o resumo. O Pro libera arquivo, linha, explicação do risco e prompt de correção. O projeto de demonstração também libera detalhes. O agente pede aprovação antes de editar arquivos.
+
+## Organização
+
+| Caminho | Conteúdo |
+| --- | --- |
+| `shared/skill/SKILL.template.md` | Instruções compartilhadas; edite aqui |
+| `shared/platforms.json` | Identificadores de origem e caminhos |
+| `plugins/cursor/` | Manifesto, skill gerada, imagens e guia |
+| `.cursor-plugin/marketplace.json` | Índice de plugins deste repositório |
+| `scripts/build.mjs` | Gera as skills a partir do modelo |
+| `scripts/check.mjs` | Valida manifestos, comandos e conteúdo público |
+| `scripts/contract-test.mjs` | Verifica o scanner publicado no npm |
+
+## Contrato da integração
+
+O plugin usa `--resumo-json`, com `contract: 1`: nota, contagens, estado das verificações, situação da conta e link de planos. Esse resumo não contém caminhos de arquivos, linhas, código nem prompts de correção. Os detalhes vêm de `--json` quando liberados pelo plano ou pela demonstração.
+
+Campos novos podem ser adicionados ao contrato 1. Remover campos ou mudar seu significado exige uma nova versão do contrato. Diante de um contrato incompatível, o plugin interrompe a interpretação.
+
+## Desenvolvimento
+
+Requer Node.js 20 ou superior. Execute na raiz deste repositório:
 
 ```
-shared/skill/SKILL.template.md   The one skill, shared by every platform
-shared/platforms.json            Per-platform values (the --origem attribution id, output paths)
-plugins/<platform>/              Platform manifest, generated skill, assets and listing README
-.cursor-plugin/marketplace.json  Cursor marketplace index for this repository
-scripts/build.mjs                Generates each platform's SKILL.md from the template
-scripts/check.mjs                Validates manifests, skills and runs the exposure audit
-scripts/contract-test.mjs        Runs the published scanner and checks the integration contract
+node scripts/build.mjs
+node scripts/check.mjs
+node scripts/contract-test.mjs
 ```
 
-## Integration contract
+O último comando precisa de internet e verifica o pacote publicado. O verificador restringe os comandos da skill e rejeita hooks ou servidores MCP não revisados.
 
-Plugins call the scanner with `--resumo-json`, which prints a JSON summary (`contract: 1`): score, number of problems, per-check status, plan status and the plans link. It never contains file paths, line numbers, code or fix prompts — those come from `vibedefender --json` and only for plans that unlock them. Fields may be added within contract 1; if a field changes meaning or is removed, the contract number goes up and plugins tell the user to update.
+## Privacidade e segurança
 
-## Development
+O VibeDefender analisa os arquivos localmente, sem enviar seu código ao serviço VibeDefender. Validação de plano e telemetria mínima podem usar a rede. O agente Cursor recebe os resultados dos comandos e pode processá-los conforme suas próprias configurações e políticas. Consulte [SECURITY.md](SECURITY.md).
 
-```
-node scripts/build.mjs          # after editing shared/skill/SKILL.template.md
-node scripts/check.mjs          # before every commit
-node scripts/contract-test.mjs  # needs Node 20+ and internet (downloads the scanner)
-```
+Palavras-chave: security, security scanner, vulnerability scanner, AI security, vibe coding, Supabase, Cursor, Lovable, Bolt.
 
-Plugins may only run the commands allowlisted in `scripts/check.mjs`. Hooks and MCP servers are rejected by the check until explicitly reviewed.
+## Licença
 
-## Security
-
-See [SECURITY.md](SECURITY.md).
-
-## License
-
-MIT for the contents of this repository. The VibeDefender scanner is proprietary and licensed separately.
+MIT para este repositório. O scanner VibeDefender é proprietário e tem licença separada.

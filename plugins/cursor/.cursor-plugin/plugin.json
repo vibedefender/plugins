@@ -1,8 +1,8 @@
 {
   "name": "vibedefender",
-  "displayName": "VibeDefender — Security for AI-built apps",
-  "version": "1.0.0",
-  "description": "Created your app with AI? Scan it before you ship. Runs the VibeDefender security scanner locally on your project and finds the mistakes AI leaves behind: exposed secret keys, Supabase tables without RLS, IDOR, API routes without login, permissive CORS, insecure cookies, SQL injection and .env files in Git. Free score in one command. Your code never leaves your machine.",
+  "displayName": "VibeDefender — segurança para apps feitos com IA",
+  "version": "1.0.1",
+  "description": "Criou seu app com IA? Verifique a segurança antes de publicar. Scanner local para chaves expostas, Supabase sem RLS, IDOR, APIs sem login, CORS, cookies e SQL injection. Nota e resumo gratuitos; detalhes e prompts de correção no Pro. Feito para vibecoders brasileiros.",
   "author": {
     "name": "VibeDefender",
     "email": "sac.vibedefender@gmail.com"

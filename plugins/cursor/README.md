@@ -1,61 +1,62 @@
-# VibeDefender — Security for AI-built apps
+# VibeDefender — segurança para apps feitos com IA
 
-**Created your app with AI? Scan it before you ship.**
+**Criou seu app com IA? Verifique a segurança antes de publicar.**
 
-AI tools build apps fast, and they leave the same security mistakes behind again and again: a secret key in the browser, a Supabase table anyone can read, an API route that never checks who is calling. VibeDefender finds them in seconds.
+Uma chave secreta no navegador, uma tabela Supabase sem proteção ou uma rota de API sem login podem passar despercebidas durante a criação de um app. O VibeDefender procura esses problemas no seu projeto e mostra o resultado no Cursor.
 
-Ask the Cursor agent **"check the security of this project"**, or type **`/vibedefender`**. The agent runs the VibeDefender scanner on your machine and tells you your security score and what is wrong.
+Com o plugin instalado, peça **“verifique a segurança desse projeto”**, **“rode o VibeDefender”** ou use **`/vibedefender`**. O agente executa o scanner localmente e apresenta a nota e os problemas encontrados.
 
-![VibeDefender scan in the terminal: security score 5/100, 7 problems found](assets/screenshot-free-scan.png)
+![Exemplo de análise: nota 5/100 e 7 problemas encontrados](assets/screenshot-free-scan.png)
 
-## What it checks
+## O que ele verifica
 
-1. Secret keys exposed in the browser or in the code
-2. `.env` files committed to Git
-3. Database tables open to anyone (Supabase without RLS)
-4. Permissive CORS that lets any site call your API with credentials
-5. IDOR — seeing another user's data by changing an ID
-6. Insecure session cookies
-7. SQL injection (queries built by joining strings)
-8. API routes without authentication
+1. Chaves secretas expostas no código ou no navegador.
+2. Arquivos `.env` versionados no Git.
+3. Tabelas Supabase sem RLS.
+4. CORS permissivo com credenciais.
+5. IDOR: acesso a dados de outra pessoa pela troca de um identificador.
+6. Cookies de sessão inseguros.
+7. SQL injection em consultas montadas por concatenação.
+8. Rotas de API sem autenticação.
 
-It works with Next.js, React, Express, Supabase, Firebase and more, in JavaScript, TypeScript, Python, PHP and Go — including projects made with Lovable, Bolt, v0, Replit, Claude Code or Cursor itself.
+A cobertura varia conforme a linguagem, o framework e o padrão de código. O scanner reconhece padrões em projetos como Next.js, React, Express, Supabase e Firebase, incluindo apps criados com Lovable, Bolt, v0, Replit e Cursor. Uma análise sem achados não garante segurança completa.
 
-## Free and Pro
+## Gratuito e Pro
 
-**Free:** all 8 checks, the security score (0–100), how many problems exist and which checks found them. Unlimited scans.
+**Gratuito:** nota de 0 a 100, contagem de problemas e categorias afetadas, sem limite de análises. Verificações que não puderem rodar aparecem como incompletas.
 
-**Pro:** where each problem is (file and line), what someone could do with it, and a ready-to-use fix prompt — which the Cursor agent can apply for you, one fix at a time, with your approval.
+**Pro:** arquivo, linha, explicação do risco e prompt de correção. O agente pode ajudar a corrigir um problema por vez, com sua aprovação. O projeto de demonstração também permite experimentar os detalhes.
 
-![VibeDefender Pro: file, line, risk explanation and fix prompt](assets/screenshot-pro-fix.png)
+![Exemplo do Pro: arquivo, linha, explicação e prompt de correção](assets/screenshot-pro-fix.png)
 
-Plans at [vibedefender.com.br](https://vibedefender.com.br/planos). After subscribing, run `npx vibedefender login` once and scan again.
+[Conheça os planos](https://vibedefender.com.br/planos?utm_source=cursor&utm_medium=integracao&utm_campaign=plugin). Após assinar, execute `npx vibedefender login` uma vez no terminal e analise novamente.
 
-## Your code stays on your machine
+## Privacidade
 
-The scanner runs locally. Your code, file names and paths are never sent anywhere. With an account connected, only a one-way hash of the project is sent to verify your plan. The scanner also reports that a run started and finished, with its version and no project information — turn that off with `VIBEDEFENDER_TELEMETRIA=0`.
+O VibeDefender analisa o projeto na sua máquina, sem enviar código, nomes de arquivos ou caminhos ao serviço VibeDefender. Com uma conta conectada, envia um hash do projeto para verificar o plano. A telemetria informa início e término da execução e versão, sem conteúdo do projeto; desative com `VIBEDEFENDER_TELEMETRIA=0`.
 
-## Requirements
+**O Cursor recebe os resultados dos comandos.** Resultados detalhados podem incluir localizações e instruções de correção, processadas conforme as configurações e políticas do Cursor. A análise local do scanner não significa que o agente opere sem serviços externos.
 
-- Node.js 20 or newer ([nodejs.org](https://nodejs.org))
-- Internet access the first time, to download the scanner from npm (`npx`)
+## Requisitos e funcionamento
 
-## How this plugin works
+- Node.js 20 ou superior, com npm e npx ([instalação oficial](https://nodejs.org)).
+- Internet para baixar o scanner pelo npm e, quando conectado, verificar a conta e o plano.
+- Scanner `vibedefender` 0.2.0 ou superior, com contrato de integração 1.
 
-This plugin contains no scanner code. It adds one skill that tells the Cursor agent to run the published scanner — the `vibedefender` package on npm — in your project folder:
+Este plugin orienta o agente a executar o pacote publicado:
 
 ```
 npx -y vibedefender@latest --resumo-json --origem cursor
 ```
 
-and to report exactly what the scanner returned. The agent never invents findings. Scanner updates reach you automatically, without updating the plugin.
+O agente apresenta o resultado retornado. Quando os detalhes estão liberados, consulta também `--json`. O scanner é atualizado via npm, independentemente do plugin.
 
-**Cursor sandbox (macOS and Linux):** the agent runs commands in a sandbox that blocks network access by default. The free scan works inside it. If you have a paid plan and the agent says your plan could not be verified, approve network access for the command, or run `npx vibedefender` in your own terminal.
+Se o ambiente do Cursor bloquear rede e o plano não puder ser verificado, autorize a rede para o comando ou execute `npx vibedefender` no seu terminal. Isso não significa que seja necessário assinar novamente.
 
-**Language:** the scanner's reports are in Brazilian Portuguese. The agent answers in your language.
+Os textos do scanner são em português brasileiro. O agente responde no idioma da conversa.
 
-## Support
+## Suporte e licença
 
 [vibedefender.com.br](https://vibedefender.com.br) · sac.vibedefender@gmail.com
 
-This plugin is MIT-licensed. The VibeDefender scanner is proprietary software distributed on npm under its own license.
+Plugin sob licença MIT. O scanner é proprietário, distribuído compilado no npm sob licença própria. Seu JavaScript distribuído pode ser inspecionado.

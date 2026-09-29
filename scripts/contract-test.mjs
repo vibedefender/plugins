@@ -11,6 +11,12 @@ import { join, resolve } from 'node:path';
 
 const root = resolve(import.meta.dirname, '..');
 const windows = process.platform === 'win32';
+// Never read the developer's VibeDefender account during the public contract test.
+const config = mkdtempSync(join(tmpdir(), 'vibedefender-contract-'));
+const environment = { ...process.env, VIBEDEFENDER_CONFIG: config, VIBEDEFENDER_TELEMETRIA: '0', NO_COLOR: '1' };
+delete environment.VIBEDEFENDER_TOKEN;
+delete environment.VIBEDEFENDER_PLANO;
+delete environment.VIBEDEFENDER_API;
 let failures = 0;
 const check = (ok, message) => { console.log(`${ok ? 'ok  ' : 'FAIL'} ${message}`); if (!ok) failures++; };
 
@@ -22,7 +28,7 @@ function scan(cwd) {
     encoding: 'utf8',
     shell: windows,
     timeout: 300_000,
-    env: { ...process.env, VIBEDEFENDER_TELEMETRIA: '0', NO_COLOR: '1' },
+    env: environment,
   });
   let json = null;
   try { json = JSON.parse(result.stdout); } catch { /* reported below */ }
@@ -48,8 +54,12 @@ function scan(cwd) {
   const r = scan(empty);
   check(r.json?.score === null && r.json?.warnings?.includes('no-files'), 'empty folder: no score, no-files warning');
   check(r.code === 0, 'empty folder: exit code 0');
+  // mkdtemp creates an absolute directory directly below the system temp directory.
+  if (!resolve(empty).startsWith(resolve(tmpdir()) + (windows ? '\\' : '/'))) throw new Error('Unexpected temp path');
   rmSync(empty, { recursive: true, force: true });
 }
 
+if (!resolve(config).startsWith(resolve(tmpdir()) + (windows ? '\\' : '/'))) throw new Error('Unexpected config path');
+rmSync(config, { recursive: true, force: true });
 console.log(failures === 0 ? '\ncontract ok' : `\n${failures} failure(s)`);
 process.exit(failures === 0 ? 0 : 1);

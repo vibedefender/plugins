@@ -1,6 +1,13 @@
-# Changelog
+# Histórico de alterações
+
+## 1.0.1
+
+- Apresentação, instruções e metadados em português brasileiro; IDs e comandos preservados.
+- Privacidade esclarecida: análise local do scanner e processamento do agente Cursor.
+- Resumo e detalhes usam a mesma subpasta; verificações incompletas não são descritas como limpas.
+- Teste de contrato usa configuração isolada, sem a conta do desenvolvedor.
 
 ## 1.0.0
 
-- Cursor plugin with the `vibedefender` skill (`/vibedefender`, or ask the agent to check the project's security).
-- Requires the VibeDefender scanner 0.2.0 or newer on npm (integration contract 1).
+- Plugin Cursor com a skill vibedefender e contrato de integração 1.
+- Requer scanner VibeDefender 0.2.0 ou superior no npm.
