@@ -41,6 +41,7 @@ npx -y vibedefender@latest --resumo-json --origem {{SOURCE}}
 
 - The first run downloads the scanner from npm and may take up to a minute; later runs are faster.
 - Exit codes 0 and 1 both mean the scan finished (1 = a critical problem is shown in detail). Exit code 2 means the scan could not run: show the message printed on stderr (it is in Portuguese) and stop.
+- If that message says `--resumo-json` is an unknown flag (`flag desconhecida`), the scanner that npm delivered is older than version 0.2.0, which this plugin requires. Say exactly that — the plugin is fine; the scanner version is too old, usually a stale npm cache or mirror — and suggest trying again in a few minutes.
 - On Windows, if PowerShell says running scripts is disabled, run the same command with `npx.cmd` instead of `npx`.
 - If `npx` is not found, Node.js/npm is missing or broken: go back to Step 1.
 - If the download fails with a network error, the scanner could not be fetched from npm. If you run commands in a sandbox, re-run the same command asking the user to approve network access; otherwise ask the user to check their connection.
