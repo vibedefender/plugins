@@ -1,6 +1,6 @@
 ---
 name: vibedefender
-description: Execute o scanner de segurança VibeDefender no projeto e apresente nota e problemas encontrados. Use quando a pessoa pedir “verifique a segurança desse projeto”, “rode o VibeDefender”, analisar, escanear ou auditar segurança de apps e código, especialmente feitos com IA, Cursor, Lovable, Bolt, v0 ou Replit. Verifica chaves expostas, Supabase sem RLS, IDOR, APIs sem autenticação, CORS, cookies e SQL injection. Security scanner, vulnerability scanner, AI security, vibe coding.
+description: Execute o scanner de segurança VibeDefender no projeto e apresente nota e problemas encontrados. Use quando a pessoa pedir “verifique a segurança desse projeto”, “rode o VibeDefender”, analisar, escanear ou auditar segurança de apps e código, especialmente feitos com qualquer IA (Cursor, Claude Code, Codex, ChatGPT, Gemini, Grok, Copilot, Lovable, Bolt, v0, Replit, Windsurf). Verifica chaves expostas, Supabase sem RLS, IDOR, APIs sem autenticação, CORS, cookies e SQL injection. Security scanner, vulnerability scanner, AI security, vibe coding.
 ---
 
 # Análise de segurança com VibeDefender
@@ -79,6 +79,8 @@ npx -y vibedefender@latest --json
 ```
 
 O array `achados` contém `titulo`, `arquivo`, `linha`, `severidade`, `explicacao` e `promptCorrecao`. Apresente os mais graves primeiro e ofereça correção um a um. Antes de editar, explique a mudança e espere aprovação. Após corrigir, repita a etapa 3 na mesma pasta.
+
+**Saída longa:** apresente primeiro um resumo e alguns achados prioritários que estejam completos na saída recebida; não é necessário reproduzir todos os prompts nem todos os achados na mesma resposta. Se a ferramenta truncar o relatório, informe a limitação e não invente os detalhes ausentes. Se ela disponibilizar o resultado integral em um arquivo de saída, use a ferramenta de leitura nesse arquivo. Não crie pipelines, scripts `node -e`, redirecionamentos nem novos comandos para extrair ou reformatar o JSON. Não repita o scan apenas para formatar a resposta. As contagens do resumo continuam válidas, mas não afirme ter apresentado todos os detalhes se não os recebeu.
 
 **Se `details.locked > 0` e `details.available` for falso**, use apenas o caso correspondente:
 

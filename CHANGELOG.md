@@ -1,5 +1,10 @@
 # Histórico de alterações
 
+## 1.0.2
+
+- Relatórios longos: prioriza achados completos disponíveis, informa truncamento e proíbe comandos extras para reformatar a saída.
+- Textos deixam claro que serve para app feito com qualquer IA (Cursor, Claude Code, Codex, ChatGPT, Gemini, Grok, Copilot, Lovable, Bolt e outras).
+
 ## 1.0.1
 
 - Apresentação, instruções e metadados em português brasileiro; IDs e comandos preservados.

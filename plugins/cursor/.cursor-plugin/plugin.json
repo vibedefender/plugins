@@ -1,8 +1,8 @@
 {
   "name": "vibedefender",
   "displayName": "VibeDefender — segurança para apps feitos com IA",
-  "version": "1.0.1",
-  "description": "Criou seu app com IA? Verifique a segurança antes de publicar. Scanner local para chaves expostas, Supabase sem RLS, IDOR, APIs sem login, CORS, cookies e SQL injection. Nota e resumo gratuitos; detalhes e prompts de correção no Pro. Feito para vibecoders brasileiros.",
+  "version": "1.0.2",
+  "description": "Criou seu app com IA — Cursor, Claude Code, Codex, ChatGPT, Gemini, Grok, Lovable ou qualquer outra? Verifique a segurança antes de publicar. Scanner local para chaves expostas, Supabase sem RLS, IDOR, APIs sem login, CORS, cookies e SQL injection. Nota e resumo gratuitos; detalhes e prompts de correção no Pro. Feito para vibecoders brasileiros.",
   "author": {
     "name": "VibeDefender",
     "email": "sac.vibedefender@gmail.com"
@@ -25,6 +25,10 @@
     "idor",
     "sql-injection",
     "nextjs",
+    "claude-code",
+    "codex",
+    "chatgpt",
+    "gemini",
     "lovable",
     "bolt"
   ],

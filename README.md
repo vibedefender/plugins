@@ -1,6 +1,6 @@
 # VibeDefender — segurança para quem cria apps com IA
 
-Criou seu app com Cursor, Lovable ou Bolt? Use o [VibeDefender](https://vibedefender.com.br) para verificar problemas de segurança antes de publicar.
+Criou seu app com IA — Cursor, Claude Code, Codex, ChatGPT, Gemini, Grok, Copilot, Lovable, Bolt ou qualquer outra? Use o [VibeDefender](https://vibedefender.com.br) para verificar problemas de segurança antes de publicar. Não importa qual IA escreveu o código.
 
 Este repositório contém os **plugins de integração**, com instruções para executar o scanner publicado no npm e apresentar seus resultados. Não contém o código-fonte nem as regras do scanner proprietário. O pacote npm distribui o programa compilado necessário à execução local; isso não torna sua implementação inacessível.
 
@@ -48,7 +48,7 @@ O último comando precisa de internet e verifica o pacote publicado. O verificad
 
 O VibeDefender analisa os arquivos localmente, sem enviar seu código ao serviço VibeDefender. Validação de plano e telemetria mínima podem usar a rede. O agente Cursor recebe os resultados dos comandos e pode processá-los conforme suas próprias configurações e políticas. Consulte [SECURITY.md](SECURITY.md).
 
-Palavras-chave: security, security scanner, vulnerability scanner, AI security, vibe coding, Supabase, Cursor, Lovable, Bolt.
+Palavras-chave: security, security scanner, vulnerability scanner, AI security, vibe coding, Supabase, Cursor, Claude Code, Codex, ChatGPT, Gemini, Grok, Lovable, Bolt.
 
 ## Licença
 

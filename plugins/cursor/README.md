@@ -19,7 +19,7 @@ Com o plugin instalado, peça **“verifique a segurança desse projeto”**, **
 7. SQL injection em consultas montadas por concatenação.
 8. Rotas de API sem autenticação.
 
-A cobertura varia conforme a linguagem, o framework e o padrão de código. O scanner reconhece padrões em projetos como Next.js, React, Express, Supabase e Firebase, incluindo apps criados com Lovable, Bolt, v0, Replit e Cursor. Uma análise sem achados não garante segurança completa.
+Não importa qual IA escreveu o código: Cursor, Claude Code, Codex, ChatGPT, Gemini, Grok, Copilot, Lovable, Bolt, v0, Replit, Windsurf ou qualquer outra. O scanner lê o projeto na sua máquina — JavaScript, TypeScript, Python, PHP, Go e outras linguagens, com Next.js, React, Express, Supabase, Firebase e mais. A cobertura varia conforme a linguagem, o framework e o padrão de código. Uma análise sem achados não garante segurança completa.
 
 ## Gratuito e Pro
 
